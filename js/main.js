@@ -1,28 +1,30 @@
 $(document).ready(function() {
-  //imposto una variabile per ricercare
-  var searchMovie="Ritorno al futuro";
 
+  $("#trova").click(function(){
+    //imposto una variabile per ricercare
+    var searchMovie = $("#film").val();
   //imposto la chiamata ajax
-  $.ajax(
-    {
+    $.ajax(
+      {
       //collego l'API
-      "url": "https://api.themoviedb.org/3/search/movie",
-      "data": {
+        "url": "https://api.themoviedb.org/3/search/movie",
+        "data": {
         //inserisco i dati richiesti per Boolfix
-        "api_key": "8daa01d92ef3f575dadf0aab8dfe1e77",
-        "query": searchMovie,
-        "language": "it-IT"
-      },
-      "method": "GET",
-      "success": function(data) {
+          "api_key": "8daa01d92ef3f575dadf0aab8dfe1e77",
+          "query": searchMovie,
+          "language": "it-IT"
+        },
+        "method": "GET",
+        "success": function(data) {
         //richiamo la funzione che ritorna i dati del film ricercato
-        renderMovie(data.results);
-      },
-      "error" : function(err) {
-        alert("Errore!");
-      },
-    }
-  );
+          renderMovie(data.results);
+        },
+        "error" : function(err) {
+          alert("Errore!");
+        },
+      }
+    );
+  });
 })
 
 

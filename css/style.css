@@ -26,13 +26,22 @@ p {
 }
 
 #film {
-  width: 90%;
+  width: 80%;
   border: 1px solid darkGrey;
-  height: 30px;
-  padding: 5px;
+  border-radius: 8px;
+  height:25px;
 }
 
-#trova i {
-  background-color: #fff;
-  color: darkGrey;
+#trova {
+  width:15%;
+  border: none;
+  background-color: inherit;
+  padding: 8px;
+}
+
+.icona {
+  color: #000;
+  font-size: 25px;
+  line-height: 25px;
+  padding-top: 5px;
 }
