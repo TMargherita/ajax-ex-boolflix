@@ -52,6 +52,6 @@ function renderMovie(movies) {
     var html = template(context);
     //vado ad agganciarlo al mio html
     $(".list-movies").append(html);
-  }
+  };
 
 }
