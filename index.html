@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="css/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500&display=swap" rel="stylesheet">
     <title>Boolfix</title>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" integrity="sha512-bLT0Qm9VnAYZDflyKcBaQ2gg0hSYNQrJ8RilYldYQ1FxQYoCLtUjuuRuZo+fjqhx/qtq/1itJ0C2ejDxltZVFg==" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.7.6/handlebars.min.js" integrity="sha512-zT3zHcFYbQwjHdKjCu6OMmETx8fJA9S7E6W7kBeFxultf75OPTYUJigEKX58qgyQMi1m1EgenfjMXlRZG8BXaw==" crossorigin="anonymous"></script>
@@ -15,12 +16,12 @@
 
       </ul>
     </div>
-    <script id="entry-template" type="text/x-handlebars-template">
+    <script id="movie-template" type="text/x-handlebars-template">
       <li class="movies">
-        <h2>Titolo : {{title}}</h2>
-        <h3>Titolo Originale : {{original_title}}</h3>
-        <p>Lingua Originale : {{language}} </p>
-        <p>Media Voti : {{voti}}
+        <h2>Titolo: {{title}}</h2>
+        <h3>Titolo Originale: {{original_title}}</h3>
+        <p><strong>Lingua Originale:</strong> {{language}} </p>
+        <p><strong>Media Voti: </strong> {{voti}}
       </li>
     </script>
     <script src="js/main.js" charset="utf-8"></script>

@@ -1,4 +1,26 @@
+body {
+  font-family: 'Noto Sans JP', sans-serif;
+}
+
 .wrapper {
   width: 600px;
   margin: auto;
+}
+
+
+.movies li {
+  list-style: none;
+}
+
+h2 {
+  font-weight: bold;
+}
+
+h3 {
+  font-weight: 400;
+  text-decoration: underline;
+}
+
+p {
+  font-weight: 300;
 }
