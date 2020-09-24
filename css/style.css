@@ -3,17 +3,46 @@ body {
 }
 
 .wrapper {
-  width: 600px;
   margin: auto;
+  padding: 10px;
 }
 
+.row {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  width: 100%;
+}
 
-.movies li {
+.column {
+  display: flex;
+  flex-direction: column;
+  flex-basis: 100%;
+  flex: 1;
+  align-content: stretch;
+}
+
+.double-column {
+  display: flex;
+  flex-direction: column;
+  flex-basis: 100%;
+  flex: 2;
+}
+
+.film, .series {
+  border: 2px solid red;
+  border-radius: 5px;
+}
+
+#list-movies li, #list-series li {
   list-style: none;
+  text-decoration: none;
 }
 
 h2 {
   font-weight: bold;
+  text-transform: uppercase;
+  text-align: center;
 }
 
 h3 {
@@ -33,15 +62,33 @@ p {
 }
 
 #trova {
-  width:15%;
+  width:10%;
   border: none;
-  background-color: inherit;
-  padding: 8px;
+  background-color: #fff;
 }
 
+.ricerca {
+  width: 800px;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+  margin: auto;
+  padding: 15px;
+}
 .icona {
   color: #000;
   font-size: 25px;
   line-height: 25px;
-  padding-top: 5px;
+}
+
+.tipo {
+  text-transform: uppercase;
+  font-weight: 300;
+}
+
+.stars {
+  color: gold;
+}
+.flag {
+  width: 15px;
 }

@@ -13,21 +13,49 @@
   </head>
   <body>
     <div class="wrapper">
-      <input type="text" id="film" placeholder="Cerca il tuo film preferito">
-      <button id="trova">
-        <i class="fas fa-film icona"></i>
-      </button>
+      <div class= "row">
+        <div class="column">
+          <div class="ricerca">
+            <input type="text" id="film" placeholder="Cerca il tuo film preferito">
+            <button id="trova"><i class="fas fa-film icona"></i></button>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="column">
+          <div class="film">
+            <h2>Film</h2>
+          </div>
+          <div class="row">
+            <div class="column">
+              <ul id="list-movies">
 
-      <ul class="list-movies">
+              </ul>
+            </div>
+          </div>
+        </div>
+        <div class="column">
+          <div class="series">
+            <h2>TV Series</h2>
+          </div>
+          <div class="row">
+            <div class="column">
+              <ul id="list-series">
 
-      </ul>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
     <script id="movie-template" type="text/x-handlebars-template">
       <li class="movies">
         <h2>Titolo: {{title}}</h2>
+        <div>{{images}}</div>
         <h3>Titolo Originale: {{original_title}}</h3>
-        <p><strong>Lingua Originale:</strong> {{language}} </p>
-        <p><strong>Media Voti: </strong> {{voti}}
+        <p class="tipo"> {{type}} </p>
+        <p>Lingua Originale: {{{language}}} </p>
+        <p><strong>Media Voti: </strong> <span class="stars">{{{voti}}}</span>
       </li>
     </script>
     <script src="js/main.js" charset="utf-8"></script>
