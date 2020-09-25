@@ -42,8 +42,13 @@ function callMovie(searchString) {
       },
       "method": "GET",
       "success": function(data) {
-      //richiamo la funzione che ritorna i dati del film ricercato
-        renderResults( "film" , data.results);
+        if(data.results.length > 0) {
+        //richiamo la funzione che ritorna i dati del film ricercato
+          renderResults( "film" , data.results);
+        } else {
+        //richiamo la funzione per gestire la ricerca senza risultato
+          notFound("film");
+        };
       },
       "error" : function(err) {
         alert("Errore!");
@@ -68,8 +73,13 @@ function callSeries(searchString) {
       },
       "method": "GET",
       "success": function(data) {
-      //richiamo la funzione che ritorna i dati del film ricercato
-        renderResults( "tv" , data.results);
+        if(data.results.length > 0) {
+        //richiamo la funzione che ritorna i dati del film ricercato
+          renderResults( "tv" , data.results);
+        } else {
+        //richiamo la funzione per gestire la ricerca senza risultato
+          notFound("tv");
+        };
       },
       "error" : function(err) {
         alert("Errore!");
@@ -125,15 +135,6 @@ function renderResults(type, results) {
   };
 }
 
-//funzione per ripulire i campi
-function refresh () {
-  //pulisco il campo lista ogni volta
-  $(".list-movies").html("");
-  $(".list-series").html("");
-  //pulisco il campo ricercare
-  $("#search").html("");
-}
-
 //funzione che stampa una ricerca senza risultati
 function notFound(type) {
   //creo il template
@@ -141,17 +142,28 @@ function notFound(type) {
   var template = Handlebars.compile(source);
 
   var container;
-  //appendo il risultto not found in base al risultato
+  //appendo il risultato not found in base al risultato
   if(type == "film") {
     container = $("#list-series");
   } else if( type == "tv") {
     container = $("#list-movies");
   };
   //preparo html per inserire html
-  var html = template(context);
+  var html = template();
   //vado ad agganciarlo al mio html
   container.append(html);
 }
+
+//funzione per ripulire i campi
+function refresh () {
+  //pulisco il campo ricercare
+  $("#search").html("");
+  //pulisco il campo lista ogni volta
+  $("#list-movies").html("");
+  $("#list-series").html("");
+
+}
+
 //funzione per ridurre il punteggio dei voti da 1 a 5 e sostituirlo con una stella piena <i class="fas fa-star"></i> o una stella vuota <i class="far fa-star"></i>
 function stars(num) {
   //riduco il voto da 1 a 5
