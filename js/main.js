@@ -1,19 +1,19 @@
 $(document).ready(function() {
 
   //evento per click su button
-  $("#trova").click(function(){
+  $("#trova").click(function(event){
     //imposto una variabile per ricercare
-    var searchMovie = $("#film").val();
+    var searchMovie = $("#search").val();
     //richiamo la funzione per ripulire il campo ricercare
     refresh();
     //richiamo la funzione per chiamata ajax
-    callMovie("film", searchMovie);
-    callSeries("tv", searchMovie);
+    callMovie(searchMovie);
+    callSeries(searchMovie);
   });
   //evento per ricerca con tasto Invio
-  $("#film").keypress(function(){
+  $("#search").keypress(function(event){
     //imposto una variabile per ricercare
-    var searchMovie = $("#film").val();
+    var searchMovie = $("#search").val();
     //richiamo la funzione per ripulire il campo html
     if(event.which == 13) {
       refresh();
@@ -38,17 +38,12 @@ function callMovie(searchString) {
         "api_key": "8daa01d92ef3f575dadf0aab8dfe1e77",
         "query": searchString,
         "language": "it-IT",
-        "images": {
-        //collego API per immagini
-          "url": "https://api.themoviedb.org/3/configuration",
-          "base_url": "http://image.tmdb.org/t/p/",
-          "poster_sizes": "w342"
-          }
+
       },
       "method": "GET",
       "success": function(data) {
       //richiamo la funzione che ritorna i dati del film ricercato
-        renderResults( "film", data.results);
+        renderResults( "film" , data.results);
       },
       "error" : function(err) {
         alert("Errore!");
@@ -97,22 +92,27 @@ function renderResults(type, results) {
     if(type == "film") {
       title = results[i].title;
       original_title = results[i].original_title;
-      image = results[i].poster_path;
       //creo variabile container per contenere i rispettivi risultati
       var container = $("#list-movies");
     } else if(type == "tv") {
       title = results[i].name;
-      original_name = results[i].original_name;
-      image = results[i].poster_path;
+      original_title = results[i].original_name;
       var container = $("#list-series");
     };
 
-    //creo context del template listato movies
+    //creo variabile peril poster dei film/serie tv
 
+    if(results[i].poster_path == null){
+      var poster = "img/no_image.png";
+    } else {
+      var poster = "https://image.tmdb.org/t/p/w185" + results[i].poster_path;
+    };
+
+    //creo context del template listato movies
     var context = {
+      "poster": poster,
       "title": title,
-      "images": image,
-      "original_title": original_title ,
+      "original_title": original_title,
       "language": flags(results[i].original_language),
       "voti": stars(results[i].vote_average),
       "type": type
@@ -129,10 +129,29 @@ function renderResults(type, results) {
 function refresh () {
   //pulisco il campo lista ogni volta
   $(".list-movies").html("");
+  $(".list-series").html("");
   //pulisco il campo ricercare
-  $("#film").html("");
+  $("#search").html("");
 }
 
+//funzione che stampa una ricerca senza risultati
+function notFound(type) {
+  //creo il template
+  var source = $("#not-found-template").html();
+  var template = Handlebars.compile(source);
+
+  var container;
+  //appendo il risultto not found in base al risultato
+  if(type == "film") {
+    container = $("#list-series");
+  } else if( type == "tv") {
+    container = $("#list-movies");
+  };
+  //preparo html per inserire html
+  var html = template(context);
+  //vado ad agganciarlo al mio html
+  container.append(html);
+}
 //funzione per ridurre il punteggio dei voti da 1 a 5 e sostituirlo con una stella piena <i class="fas fa-star"></i> o una stella vuota <i class="far fa-star"></i>
 function stars(num) {
   //riduco il voto da 1 a 5

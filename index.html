@@ -16,7 +16,7 @@
       <div class= "row">
         <div class="column">
           <div class="ricerca">
-            <input type="text" id="film" placeholder="Cerca il tuo film preferito">
+            <input type="text" id="search" placeholder="Cerca il tuo film preferito">
             <button id="trova"><i class="fas fa-film icona"></i></button>
           </div>
         </div>
@@ -51,12 +51,17 @@
     <script id="movie-template" type="text/x-handlebars-template">
       <li class="movies">
         <h2>Titolo: {{title}}</h2>
-        <div>{{images}}</div>
+        <div>
+          <img src="{{poster}}" alt="{{title}}">
+        </div>
         <h3>Titolo Originale: {{original_title}}</h3>
         <p class="tipo"> {{type}} </p>
         <p>Lingua Originale: {{{language}}} </p>
         <p><strong>Media Voti: </strong> <span class="stars">{{{voti}}}</span>
       </li>
+    </script>
+    <script id="not-found-template" type="text/x-handlebars-template">
+      <li> Mi dispiace, la tua ricerca non ha risultati! </li>
     </script>
     <script src="js/main.js" charset="utf-8"></script>
   </body>
