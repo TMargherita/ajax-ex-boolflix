@@ -12,15 +12,24 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.7.6/handlebars.min.js" integrity="sha512-zT3zHcFYbQwjHdKjCu6OMmETx8fJA9S7E6W7kBeFxultf75OPTYUJigEKX58qgyQMi1m1EgenfjMXlRZG8BXaw==" crossorigin="anonymous"></script>
   </head>
   <body>
-    <div class="wrapper">
+    <header>
       <div class= "row">
+        <div class="double-column">
+          <div class="logo">
+            <img src="img/logo.png" alt="">
+          </div>
+        </div>
         <div class="column">
           <div class="ricerca">
             <input type="text" id="search" placeholder="Cerca il tuo film preferito">
-            <button id="trova"><i class="fas fa-film icona"></i></button>
+            <span>
+              <button id="trova"><i class="fas fa-film icona"></i></button>
+            </span>
           </div>
         </div>
       </div>
+    </header>
+    <div class="wrapper">
       <div class="row">
         <div class="column">
           <div class="film">
@@ -34,6 +43,8 @@
             </div>
           </div>
         </div>
+      </div>
+      <div class="row">
         <div class="column">
           <div class="series">
             <h2>TV Series</h2>
@@ -49,16 +60,26 @@
       </div>
     </div>
     <script id="movie-template" type="text/x-handlebars-template">
-      <li class="movies">
-        <h2>Titolo: {{title}}</h2>
-        <div>
-          <img src="{{poster}}" alt="{{title}}">
+      <div class="movie">
+        <div class="row">
+          <div class="column">
+            <div class="card">
+              <div class="poster">
+                <img src="{{poster}}" alt="{{title}}">
+              </div>
+              <div class="info-movie">
+                <h2 class="titolo">Titolo:<br> {{title}}</h2>
+                <div class="movie-descrip">
+                  <h3 class="sottotitolo">Titolo Originale:<br> {{original_title}}</h3>
+                  <p class="tipo"> {{type}} </p>
+                  <p>Lingua Originale: {{{language}}} </p>
+                  <p>Media Voti:<span class="stars">{{{voti}}}</span></p>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
-        <h3>Titolo Originale: {{original_title}}</h3>
-        <p class="tipo"> {{type}} </p>
-        <p>Lingua Originale: {{{language}}} </p>
-        <p><strong>Media Voti: </strong> <span class="stars">{{{voti}}}</span>
-      </li>
+      </div>
     </script>
     <script id="not-found-template" type="text/x-handlebars-template">
       <li > Mi dispiace, la tua ricerca non ha risultati! </li>

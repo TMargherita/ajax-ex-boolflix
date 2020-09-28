@@ -115,7 +115,7 @@ function renderResults(type, results) {
     if(results[i].poster_path == null){
       var poster = "img/no_image.png";
     } else {
-      var poster = "https://image.tmdb.org/t/p/w185" + results[i].poster_path;
+      var poster = "https://image.tmdb.org/t/p/w342" + results[i].poster_path;
     };
 
     //creo context del template listato movies
